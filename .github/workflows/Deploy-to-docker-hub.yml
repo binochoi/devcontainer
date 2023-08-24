@@ -28,7 +28,7 @@ jobs:
         file: ./Dockerfile
         context: .
         push: true
-        tags: binodeveloper/pwsh-devcontainer:${{ github.sha }}
+        tags: binodeveloper/pwsh-devcontainer:latest
     -
       name: Build and push (latest)
       uses: docker/build-push-action@v4
