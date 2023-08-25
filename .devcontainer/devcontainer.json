@@ -1,5 +1,5 @@
 {
-	"name": "binochoi/devcontainer",
+	"name": "binodeveloper/devcontainer",
 	"image": "binodeveloper/pwsh-devcontainer:latest",
 	"remoteUser": "bino",
 	"workspaceFolder": "/workspaces"
