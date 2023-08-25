@@ -7,6 +7,7 @@ ARG PASSWORD=asas
 ARG UID=1001
 ARG GID=$UID
 
+RUN mkdir /workspaces
 RUN sudo chown -R "$UID:$UID" /workspaces
 ##########################################
 ########## create new user ###############
