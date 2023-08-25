@@ -1,0 +1,8 @@
+{
+	"name": "binochoi/devcontainer",
+	"build": {
+		"dockerfile": "binodeveloper/pwsh-devcontainer:latest"
+	},
+	"remoteUser": "vscode",
+	"workspaceFolder": "/workspaces"
+}
