@@ -1,6 +1,6 @@
 {
 	"name": "binochoi/devcontainer",
 	"image": "binodeveloper/pwsh-devcontainer:latest",
-	"remoteUser": "vscode",
+	"remoteUser": "bino",
 	"workspaceFolder": "/workspaces"
 }
