@@ -2,6 +2,8 @@ Import-Module QuiteShortAliases
 Import-Module Bino.Bootstrap
 Import-Module Bino.PersonalAliases
 
+Set-Alias gcl gcloud
+
 function Set-Up {
     gcloud auth login
     function Get-GcloudSecret([string] $name) {
