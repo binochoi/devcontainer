@@ -14,3 +14,11 @@ function Set-Up {
 
     ngrok config add-authtoken $(Get-GcloudSecret "NGROK_API_TOKEN")
 }
+
+
+function p() {
+    npm exec pnpm $args
+}
+function nest() {
+    npm exec @nestjs/cli $args
+}
