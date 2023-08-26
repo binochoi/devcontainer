@@ -13,7 +13,6 @@ WORKDIR /home/bino/devtools
 
 RUN sudo apt-get update
 RUN sh ./installs/pwsh.sh
-RUN pwsh ./scripts/installDeps.ps1 -path ./installs
 
 RUN pwsh -c Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 RUN pwsh -c Install-Module -Scope AllUsers Bino.Bootstrap
