@@ -12,7 +12,7 @@ RUN mkdir /devtools
 COPY . /devtools
 
 RUN sh /devtools/installs/pwsh.sh
-# RUN pwsh /devtools/scripts/installDeps.ps1 -path ./installs
+RUN pwsh /devtools/scripts/installDeps.ps1 -path ./installs
 
 RUN pwsh -c Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 RUN pwsh -c Install-Module -Scope AllUsers Bino.Bootstrap
