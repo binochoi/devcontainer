@@ -14,11 +14,7 @@ COPY . .
 
 RUN sh ./installs/pwsh.sh
 RUN pwsh ./scripts/installDeps.ps1 -path ./installs
-
-RUN pwsh -c Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
-RUN pwsh -c Install-Module -Scope AllUsers Bino.Bootstrap
-RUN pwsh -c Install-Module -Scope AllUsers Bino.PersonalAliases
-RUN pwsh -c Install-Module -Scope AllUsers QuiteShortAliases
+RUN pwsh ./scripts/bootstrap.ps1
 
 RUN mkdir /workspaces
 RUN sudo chown -R "$UID:$UID" /workspaces
