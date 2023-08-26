@@ -31,8 +31,9 @@ RUN sudo echo "$USERNAME:$PASSWORD" | chpasswd
 RUN sudo echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USERNAME \
 && sudo chmod 0440 /etc/sudoers.d/$USERNAME
 RUN sudo usermod -aG sudo $USERNAME
-USER $USERNAME
 
 RUN mkdir -p /home/bino/.config/powershell/
 COPY ./.profile.ps1 /home/bino/.config/powershell/Microsoft.PowerShell_profile.ps1
+
+USER $USERNAME
 WORKDIR /workspaces
