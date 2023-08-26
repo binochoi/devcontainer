@@ -9,10 +9,11 @@ ARG UID=1001
 ARG GID=$UID
 
 RUN mkdir /devtools
-COPY . /devtools
+WORKDIR /devtools
+COPY . .
 
-RUN sh /devtools/installs/pwsh.sh
-# RUN pwsh /devtools/scripts/installDeps.ps1 -path ./installs
+RUN sh ./installs/pwsh.sh
+RUN pwsh ./scripts/installDeps.ps1 -path ./installs
 
 RUN pwsh -c Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 RUN pwsh -c Install-Module -Scope AllUsers Bino.Bootstrap
@@ -20,12 +21,11 @@ RUN pwsh -c Install-Module -Scope AllUsers Bino.PersonalAliases
 RUN pwsh -c Install-Module -Scope AllUsers QuiteShortAliases
 
 RUN mkdir /workspaces
-WORKDIR /workspaces
 RUN sudo chown -R "$UID:$UID" /workspaces
 ##########################################
 ########## create new user ###############
 ##########################################
-RUN pwsh /devtools/scripts/createUser.ps1 \
+RUN pwsh ./scripts/createUser.ps1 \
     -username $USERNAME \
     -pw $PASSWORD \
     -UID $UID \
