@@ -22,9 +22,6 @@ RUN pwsh -c Install-Module -Scope AllUsers QuiteShortAliases
 
 RUN mkdir /workspaces
 RUN sudo chown -R "$UID:$UID" /workspaces
-##########################################
-########## create new user ###############
-##########################################
 RUN pwsh ./scripts/createUser.ps1 \
     -username $USERNAME \
     -pw $PASSWORD \
