@@ -12,7 +12,7 @@ RUN mkdir /devtools
 COPY . /devtools
 
 RUN sh /devtools/installs/pwsh.sh
-RUN pwsh /devtools/scripts/installDeps.ps1 -path ./installs
+# RUN pwsh /devtools/scripts/installDeps.ps1 -path ./installs
 
 RUN pwsh -c Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 RUN pwsh -c Install-Module -Scope AllUsers Bino.Bootstrap
@@ -25,12 +25,11 @@ RUN sudo chown -R "$UID:$UID" /workspaces
 ##########################################
 ########## create new user ###############
 ##########################################
-RUN sudo groupadd --gid $GID $USERNAME
-RUN sudo useradd --uid $UID --gid $GID -ms $(which pwsh) $USERNAME
-RUN sudo echo "$USERNAME:$PASSWORD" | chpasswd
-RUN sudo echo "$USERNAME ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USERNAME \
-&& sudo chmod 0440 /etc/sudoers.d/$USERNAME
-RUN sudo usermod -aG sudo $USERNAME
+RUN pwsh /devtools/scripts/createUser.ps1 \
+    -username $USERNAME \
+    -pw $PASSWORD \
+    -UID $UID \
+    -GID $GID
 USER $USERNAME
 
 RUN mkdir -p /home/bino/.config/powershell/
