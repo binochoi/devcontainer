@@ -1,12 +1,12 @@
 FROM mcr.microsoft.com/vscode/devcontainers/base:0-ubuntu-22.04
 
-RUN ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
-RUN sudo apt-get update
-
 ARG USERNAME=bino
 ARG PASSWORD=asas
 ARG UID=1001
 ARG GID=$UID
+
+RUN ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+RUN sudo apt-get update
 
 RUN mkdir /devtools
 WORKDIR /devtools
