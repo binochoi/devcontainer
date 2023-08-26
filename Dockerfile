@@ -12,7 +12,7 @@ COPY . /home/bino/devtools
 WORKDIR /home/bino/devtools
 
 RUN sudo apt-get update
-RUN ./installs/pwsh.sh
+RUN sh ./installs/pwsh.sh
 RUN pwsh ./scripts/installDeps.ps1 -path ./installs
 
 RUN pwsh -c Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
