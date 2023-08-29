@@ -6,15 +6,14 @@ ARG UID=1001
 ARG GID=$UID
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
-RUN sudo apt-get update
+RUN sudo apt update
+RUN sudo apt install sudo
 
 RUN mkdir /devtools
 WORKDIR /devtools
 COPY . .
 
-RUN sh ./installs/pwsh.sh
-RUN pwsh ./scripts/installDeps.ps1 -path ./installs
-RUN pwsh ./scripts/bootstrap.ps1
+RUN sh ./setup.sh
 
 RUN mkdir /workspaces
 RUN sudo chown -R "$UID:$UID" /workspaces
@@ -25,6 +24,4 @@ RUN pwsh ./scripts/createUser.ps1 \
     -GID $GID
 USER $USERNAME
 
-RUN mkdir -p /home/bino/.config/powershell/
-COPY ./.profile.ps1 /home/bino/.config/powershell/Microsoft.PowerShell_profile.ps1
 WORKDIR /workspaces
