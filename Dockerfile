@@ -13,15 +13,16 @@ RUN mkdir /devtools
 WORKDIR /devtools
 COPY . .
 
-RUN sh ./setup.sh
-
-RUN mkdir /workspaces
-RUN sudo chown -R "$UID:$UID" /workspaces
+RUN sh ./installs/pwsh.sh
 RUN pwsh ./scripts/createUser.ps1 \
     -username $USERNAME \
     -pw $PASSWORD \
     -UID $UID \
     -GID $GID
+RUN sh ./setup.sh
+
+RUN mkdir /workspaces
+RUN sudo chown -R "$UID:$UID" /workspaces
 USER $USERNAME
 
 WORKDIR /workspaces
