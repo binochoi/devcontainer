@@ -6,7 +6,8 @@ if [ "$USER" != "root" ]; then
 fi
 
 sudo sh ./installs/pwsh.sh
-sudo pwsh ./scripts/installDeps.ps1 -path ./installs
+sudo sh ./installs/docker.sh
+sudo sh ./installs/ngrok.sh
 sudo pwsh ./scripts/bootstrap.ps1
 sudo mkdir -p /home/$SUDO_USER/.config/powershell/
 sudo cp ./.profile.ps1 /home/$SUDO_USER/.config/powershell/Microsoft.PowerShell_profile.ps1
