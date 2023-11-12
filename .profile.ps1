@@ -15,6 +15,7 @@ function Set-Up {
     ngrok config add-authtoken $(Get-GcloudSecret "NGROK_API_TOKEN")
 }
 
+git config pull.rebase false
 
 function p() {
     npm exec pnpm $args
