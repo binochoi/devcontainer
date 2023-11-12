@@ -19,7 +19,7 @@ RUN pwsh ./scripts/createUser.ps1 \
     -pw $PASSWORD \
     -UID $UID \
     -GID $GID
-RUN sh ./setup.sh
+RUN sudo sh ./setup.sh
 
 RUN mkdir /workspaces
 RUN sudo chown -R "$UID:$UID" /workspaces
