@@ -17,9 +17,9 @@ function Set-Up {
 
 git config pull.rebase false
 
-function p() {
-    npm exec pnpm $args
+function Get-AllEnvVar {
+    Get-ChildItem Env:
 }
-function nest() {
-    npm exec @nestjs/cli $args
+function Set-EnvVar([string] $name, [string] $value) {
+    New-Item -Path Env:\$name -Value $value
 }
